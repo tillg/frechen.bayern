@@ -1,0 +1,41 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout content repo
+        uses: actions/checkout@v4
+
+      - name: Checkout generator
+        uses: actions/checkout@v4
+        with:
+          repository: tillg/tills-static-site-generator
+          path: generator
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install -r generator/requirements.txt
+
+      - name: Generate site
+        run: |
+          python generator/generate_site.py
+
+      - name: Commit docs changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git diff --quiet --cached || git commit -m "Build site"
+          git push
