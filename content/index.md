@@ -25,10 +25,8 @@ features:
     icon: "/static/icons/relax.svg"
     color: "coral"
 
-# Screenshots (placeholder)
-screenshots:
-  - image: "/static/images/placeholder.jpg"
-    alt: "Haus Ansicht"
+# Screenshots (empty for now)
+screenshots: []
 
 # Contact section
 contact_section:
