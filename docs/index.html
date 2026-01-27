@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen - Frechen Bayern</title>
+    <meta name="description" content="Unser Haus in den Bergen nahe Berchtesgaden/Bischofswiesen">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frechen.bayern/">
+    <meta property="og:title" content="Willkommen - Frechen Bayern">
+    <meta property="og:description" content="Unser Haus in den Bergen nahe Berchtesgaden/Bischofswiesen">
+    <meta property="og:image" content="https://frechen.bayern/static/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Frechen Bayern">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://frechen.bayern/">
+    <meta property="twitter:title" content="Willkommen - Frechen Bayern">
+    <meta property="twitter:description" content="Unser Haus in den Bergen nahe Berchtesgaden/Bischofswiesen">
+    <meta property="twitter:image" content="https://frechen.bayern/static/images/og-image.png">
+
+    <!-- Apple -->
+    <meta name="apple-mobile-web-app-title" content="Frechen Bayern">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration using centralized design variables
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        
+                        'brand-orange': '#2563eb',
+                        
+                        'brand-yellow': '#3b82f6',
+                        
+                        'brand-coral': '#60a5fa',
+                        
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Variables for additional design tokens -->
+    <style>
+        :root {
+            /* Brand Colors */
+            
+            --color-brand-orange: #2563eb;
+            
+            --color-brand-yellow: #3b82f6;
+            
+            --color-brand-coral: #60a5fa;
+            
+
+            /* Background Colors */
+            
+            --color-bg-primary: #ffffff;
+            
+            --color-bg-secondary: #f8fafc;
+            
+            --color-bg-tertiary: #f1f5f9;
+            
+
+            /* Text Colors */
+            
+            --color-text-primary: #0f172a;
+            
+            --color-text-secondary: #334155;
+            
+            --color-text-tertiary: #64748b;
+            
+
+            /* Border Colors */
+            
+            --color-border-primary: #e2e8f0;
+            
+            --color-border-secondary: #cbd5e1;
+            
+
+            /* Spacing */
+            
+            --spacing-xs: 0.25rem;
+            
+            --spacing-sm: 0.5rem;
+            
+            --spacing-md: 1rem;
+            
+            --spacing-lg: 1.5rem;
+            
+            --spacing-xl: 2rem;
+            
+            --spacing-2xl: 3rem;
+            
+
+            /* Border Radius */
+            
+            --radius-sm: 0.25rem;
+            
+            --radius-md: 0.5rem;
+            
+            --radius-lg: 0.75rem;
+            
+            --radius-xl: 1rem;
+            
+            --radius-full: 9999px;
+            
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/static/images/logo.svg">
+    <link rel="alternate icon" type="image/png" href="/static/images/summarum_logo.png">
+
+    
+
+    
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-black border-b" style="border-color: var(--color-border-primary);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo and brand -->
+                <div class="flex items-center space-x-3">
+                    <img src="/static/images/logo.svg" alt="Frechen Bayern Logo" class="h-10 w-10">
+                    <a href="/" class="text-xl font-bold text-white hover:text-brand-orange transition-colors">
+                        Frechen Bayern
+                    </a>
+                </div>
+
+                <!-- Navigation links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/how-it-works.html" class="text-gray-300 hover:text-white transition-colors">How it works</a>
+                    <a href="/faq.html" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
+                    <a href="/privacy.html" class="text-gray-300 hover:text-white transition-colors">Privacy</a>
+                    <a href="/legal.html" class="text-gray-300 hover:text-white transition-colors">Legal</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--color-border-primary); background-color: var(--color-bg-secondary);">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="block px-3 py-2 hover:text-white rounded transition-colors" style="color: var(--color-text-secondary);">Home</a>
+                <a href="/how-it-works.html" class="block px-3 py-2 hover:text-white rounded transition-colors" style="color: var(--color-text-secondary);">How it works</a>
+                <a href="/faq.html" class="block px-3 py-2 hover:text-white rounded transition-colors" style="color: var(--color-text-secondary);">FAQ</a>
+                <a href="/privacy.html" class="block px-3 py-2 hover:text-white rounded transition-colors" style="color: var(--color-text-secondary);">Privacy</a>
+                <a href="/legal.html" class="block px-3 py-2 hover:text-white rounded transition-colors" style="color: var(--color-text-secondary);">Legal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        
+<!-- Hero Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center">
+            <!-- Hero Image (from frontmatter) or Logo -->
+            <div class="flex justify-center mb-8">
+                
+                <img src="/static/images/logo.svg" alt="Frechen Bayern Logo" class="h-32 w-32">
+                
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-brand-orange via-brand-yellow to-brand-coral bg-clip-text text-transparent">
+                    Frechen Bayern
+                </span>
+            </h1>
+
+            <!-- Tagline -->
+            <p class="text-2xl md:text-3xl text-gray-300 mb-8">
+                Unser Haus in den Bergen
+            </p>
+
+            <!-- Description -->
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">
+                Ein wunderschönes Haus in der Nähe von Berchtesgaden und Bischofswiesen.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                
+            </div>
+
+            <!-- CTA Statement (optional) -->
+            
+        </div>
+    </div>
+</section>
+
+<!-- Markdown Content Section -->
+
+
+<!-- Features Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">
+            <span class="bg-gradient-to-r from-brand-orange to-brand-yellow bg-clip-text text-transparent">
+                Features
+            </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Feature: Lage -->
+            <div class="bg-black border rounded-lg p-8 hover:border-brand-orange transition-colors" style="border-color: var(--color-border-primary);">
+                <div class="w-12 h-12 bg-brand-orange rounded-lg flex items-center justify-center mb-4">
+                    <img src="/static/icons/location.svg" class="w-6 h-6 text-white icon-white" alt="">
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Lage</h3>
+                <p class="text-gray-400">
+                    Idyllisch gelegen in den bayerischen Alpen, nahe Berchtesgaden und Bischofswiesen.
+                </p>
+            </div>
+            
+            <!-- Feature: Natur -->
+            <div class="bg-black border rounded-lg p-8 hover:border-brand-yellow transition-colors" style="border-color: var(--color-border-primary);">
+                <div class="w-12 h-12 bg-brand-yellow rounded-lg flex items-center justify-center mb-4">
+                    <img src="/static/icons/nature.svg" class="w-6 h-6 text-white icon-white" alt="">
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Natur</h3>
+                <p class="text-gray-400">
+                    Umgeben von Bergen, Wäldern und frischer Alpenluft.
+                </p>
+            </div>
+            
+            <!-- Feature: Erholung -->
+            <div class="bg-black border rounded-lg p-8 hover:border-brand-coral transition-colors" style="border-color: var(--color-border-primary);">
+                <div class="w-12 h-12 bg-brand-coral rounded-lg flex items-center justify-center mb-4">
+                    <img src="/static/icons/relax.svg" class="w-6 h-6 text-white icon-white" alt="">
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Erholung</h3>
+                <p class="text-gray-400">
+                    Der perfekte Ort zum Entspannen und die Seele baumeln lassen.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Screenshots Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">
+            <span class="bg-gradient-to-r from-brand-yellow to-brand-coral bg-clip-text text-transparent">
+                Screenshots
+            </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+
+
+<!-- Contact Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-bg-tertiary);">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8">
+            <span class="bg-gradient-to-r from-brand-coral to-brand-orange bg-clip-text text-transparent">
+                Kontakt
+            </span>
+        </h2>
+        <p class="text-lg text-gray-400 mb-8">
+            Fragen? Schreiben Sie uns!
+        </p>
+        <a href="mailto:till.gartner@gmail.com"
+           class="inline-flex items-center px-8 py-3 bg-brand-yellow hover:bg-opacity-90 text-black font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
+           >
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            till.gartner@gmail.com
+        </a>
+    </div>
+</section>
+
+<style>
+/* Style for SVG icons to ensure they display properly in white */
+.icon-white {
+    filter: brightness(0) invert(1);
+}
+
+/* Markdown content styling */
+.markdown-content {
+    color: #e5e7eb; /* gray-200 */
+}
+
+.markdown-content h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    background: linear-gradient(to right, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.markdown-content h3 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color: #f9fafb; /* gray-50 */
+}
+
+.markdown-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    font-size: 1.125rem; /* text-lg */
+    color: #d1d5db; /* gray-300 */
+}
+
+.markdown-content ol,
+.markdown-content ul {
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    font-size: 1.125rem; /* text-lg */
+}
+
+.markdown-content li {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+    color: #d1d5db; /* gray-300 */
+}
+
+.markdown-content strong {
+    color: #f9fafb; /* gray-50 */
+    font-weight: 600;
+}
+
+.markdown-content a {
+    color: #f7931e; /* brand-yellow */
+    text-decoration: underline;
+}
+
+.markdown-content a:hover {
+    color: #ff6b35; /* brand-orange */
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t mt-20" style="background-color: var(--color-bg-tertiary); border-color: var(--color-border-primary);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/static/images/logo.svg" alt="Frechen Bayern Logo" class="h-8 w-8">
+                        <span class="text-lg font-bold">Frechen Bayern</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Unser Haus in den Bergen</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/how-it-works.html" class="text-gray-400 hover:text-white transition-colors">How it works</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/legal.html" class="text-gray-400 hover:text-white transition-colors">Legal Note</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Contact</h3>
+                    <p class="text-gray-400">
+                        <a href="mailto:till.gartner@gmail.com" class="hover:text-white transition-colors">
+                            till.gartner@gmail.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t text-center" style="border-color: var(--color-border-primary);">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2026 Frechen Bayern. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+    
+</body>
+</html>
