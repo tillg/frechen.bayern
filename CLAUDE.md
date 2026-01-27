@@ -12,18 +12,18 @@ Static website generator for https://frechen.bayern - a site about a house in th
 - **Content:** Markdown files with YAML frontmatter in `content/`
 - **Templates:** Jinja2 HTML templates in `templates/`
 - **Output:** Static HTML generated to `docs/` (GitHub Pages deployment)
-- **Reference implementation:** `/Users/tgartner/git/summa_site` contains the mature codebase to reference
+- **Site Generator:** `../tills-static-site-generator/` - shared static site generator
 
 ## Build Commands
 
 ```bash
-# Development server with auto-rebuild
-python3 dev_server.py
+# Development server with auto-rebuild (watches for changes)
+python ../tills-static-site-generator/dev_server.py
 
-# Manual build
-python3 generate_site.py
+# Manual build only
+python ../tills-static-site-generator/generate_site.py
 
-# Preview static output
+# Preview static output (without auto-rebuild)
 cd docs && python3 -m http.server 8000
 ```
 

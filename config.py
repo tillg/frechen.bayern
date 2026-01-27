@@ -21,9 +21,9 @@ from design_variables import (
 )
 
 # Site metadata
-SITE_NAME = "Frechen Bayern"
-SITE_TAGLINE = "Unser Haus in den Bergen"
-SITE_DESCRIPTION = "Ein Haus in der Nähe von Berchtesgaden/Bischofswiesen"
+SITE_NAME = "Frechenlehen"
+#SITE_TAGLINE = "Unser Haus in den Bergen"
+#SITE_DESCRIPTION = "Ein Haus in der Nähe von Berchtesgaden/Bischofswiesen"
 DOMAIN = "frechen.bayern"
 
 # Directories
@@ -35,10 +35,6 @@ OUTPUT_DIR = "docs"
 # Contact
 CONTACT_EMAIL = "till.gartner@gmail.com"
 
-# App Links (not used for this site)
-TESTFLIGHT_LINK = ""
-MACOS_DOWNLOAD_LINK = ""
-
 # Google Analytics (add later)
 GOOGLE_ANALYTICS_ID = ""
 ENABLE_ANALYTICS = False
@@ -46,6 +42,7 @@ ENABLE_ANALYTICS = False
 # Navigation items
 NAV_ITEMS = [
     {"label": "Home", "url": "/"},
+	{"label": "Fotos","url": "/fotos"}
 ]
 
 # Footer navigation
@@ -53,8 +50,8 @@ FOOTER_NAV_ITEMS = [
     {"label": "Home", "url": "/"},
 ]
 
-# Logo filename
-LOGO_PNG = "logo.png"
+# Logo filename (in /static/images/)
+LOGO_FILE = "logo.png"
 
 # Custom styles - white background theme
 STYLES = {
