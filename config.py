@@ -55,3 +55,27 @@ FOOTER_NAV_ITEMS = [
 
 # Logo filename
 LOGO_PNG = "logo.png"
+
+# Custom styles - white background theme
+STYLES = {
+    'body': 'bg-white text-gray-900',
+    'nav_bg': 'bg-white',
+    'nav_link': 'text-gray-600 hover:text-gray-900 transition-colors',
+    'nav_brand': 'text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors',
+    'mobile_menu_btn': 'text-gray-600 hover:text-gray-900 focus:outline-none',
+    'mobile_menu_bg': 'bg-gray-50 border-t',
+    'mobile_menu_link': 'block px-3 py-2 text-gray-600 hover:text-gray-900 rounded transition-colors',
+    'footer_bg': 'bg-gray-100 border-t mt-20',
+    'footer_heading': 'text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4',
+    'footer_link': 'text-gray-600 hover:text-gray-900 transition-colors',
+    'footer_text': 'text-gray-600',
+    'footer_tagline': 'text-gray-600 text-sm',
+    'footer_copyright': 'text-gray-500 text-sm',
+    'hero_tagline': 'text-2xl md:text-3xl text-gray-600 mb-8',
+    'hero_description': 'text-lg text-gray-500 max-w-3xl mx-auto mb-12',
+    'feature_card': 'bg-white border border-gray-200 rounded-lg p-8 transition-colors',
+    'feature_title': 'text-xl font-semibold mb-3 text-gray-900',
+    'feature_description': 'text-gray-600',
+    'contact_description': 'text-lg text-gray-600 mb-8',
+    'page_description': 'text-xl text-gray-500',
+}
