@@ -48,6 +48,7 @@ NAV_ITEMS = [
 # Footer navigation
 FOOTER_NAV_ITEMS = [
     {"label": "Home", "url": "/"},
+	{"label": "Fotos","url": "/fotos"}
 ]
 
 # Logo filename (in /static/images/)
