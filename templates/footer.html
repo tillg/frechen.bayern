@@ -1,0 +1,30 @@
+<!-- Footer -->
+<footer class="{{ styles.footer_bg }}" style="background-color: var(--color-bg-tertiary); border-color: var(--color-border-primary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <img src="/static/images/{{ site.logo_file }}" alt="{{ site.name }} Logo" class="h-8 w-auto">
+                    <span class="text-lg font-bold">{{ site.name }}</span>
+                </div>
+                <p class="{{ styles.footer_tagline }}">{{ site.tagline }}</p>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <ul class="space-y-2">
+                    {%- for item in footer_nav_items %}
+                    <li><a href="{{ item.url }}" class="{{ styles.footer_link }}">{{ item.label }}</a></li>
+                    {%- endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t text-center" style="border-color: var(--color-border-primary);">
+            <p class="{{ styles.footer_copyright }}">
+                &copy; 2026 Till Gartner
+            </p>
+        </div>
+    </div>
+</footer>
