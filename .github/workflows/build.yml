@@ -10,14 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout content repo
+      - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Checkout generator
-        uses: actions/checkout@v4
-        with:
-          repository: tillg/tills-static-site-generator
-          path: generator
 
       - name: Set up Python
         uses: actions/setup-python@v5

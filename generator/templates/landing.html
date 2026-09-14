@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "hero.html" %}
+
+<!-- Markdown Content Section -->
+{% if page.content %}
+<section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-bg-tertiary);">
+    <div class="max-w-4xl mx-auto markdown-content">
+        {{ page.content | safe }}
+    </div>
+</section>
+{% endif %}
+
+<!-- Features Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">
+            <span class="bg-gradient-to-r from-brand-orange to-brand-yellow bg-clip-text text-transparent">
+                Features
+            </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for feature in page.features %}
+            <!-- Feature: {{ feature.title }} -->
+            <div class="{{ styles.feature_card }} hover:border-brand-{{ feature.color }}" style="border-color: var(--color-border-primary);">
+                <div class="w-12 h-12 bg-brand-{{ feature.color }} rounded-lg flex items-center justify-center mb-4">
+                    <img src="{{ feature.icon }}" class="w-6 h-6 text-white icon-white" alt="">
+                </div>
+                <h3 class="{{ styles.feature_title }}">{{ feature.title }}</h3>
+                <p class="{{ styles.feature_description }}">
+                    {{ feature.description }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Screenshots Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">
+            <span class="bg-gradient-to-r from-brand-yellow to-brand-coral bg-clip-text text-transparent">
+                Screenshots
+            </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for screenshot in page.screenshots %}
+            <div class="rounded-lg overflow-hidden">
+                <img src="{{ screenshot.image }}" alt="{{ screenshot.alt }}" class="w-full h-auto">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+{% if page.testimonials %}
+<section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-bg-tertiary);">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">
+            <span class="bg-gradient-to-r from-brand-coral to-brand-orange bg-clip-text text-transparent">
+                What People Say
+            </span>
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-8">
+            {% for testimonial in page.testimonials %}
+            <div class="bg-black border rounded-lg p-8 hover:border-brand-yellow transition-colors w-full md:w-[calc(33.333%-1.5rem)] md:max-w-md" style="border-color: var(--color-border-primary);">
+                <h3 class="text-xl font-semibold mb-4 text-brand-yellow">{{ testimonial.title }}</h3>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    "{{ testimonial.text | safe }}"
+                </p>
+                <p class="text-gray-500 font-medium">
+                    {{ testimonial.author | safe }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Contact Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-bg-tertiary);">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8">
+            <span class="bg-gradient-to-r from-brand-coral to-brand-orange bg-clip-text text-transparent">
+                {{ page.contact_section.title }}
+            </span>
+        </h2>
+        <p class="{{ styles.contact_description }}">
+            {{ page.contact_section.description }}
+        </p>
+        <a href="mailto:{{ page.contact_section.email }}"
+           class="inline-flex items-center px-8 py-3 bg-brand-yellow hover:bg-opacity-90 text-black font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
+           {% if enable_analytics and google_analytics_id %}
+           onclick="gtag('event', 'contact_click', {'event_category': 'engagement', 'event_label': 'email_contact'});"
+           {% endif %}>
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            {{ page.contact_section.email }}
+        </a>
+    </div>
+</section>
+
+<style>
+/* Style for SVG icons to ensure they display properly in white */
+.icon-white {
+    filter: brightness(0) invert(1);
+}
+
+/* Markdown content styling */
+.markdown-content {
+    color: #e5e7eb; /* gray-200 */
+}
+
+.markdown-content h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    background: linear-gradient(to right, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.markdown-content h3 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color: #f9fafb; /* gray-50 */
+}
+
+.markdown-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    font-size: 1.125rem; /* text-lg */
+    color: #d1d5db; /* gray-300 */
+}
+
+.markdown-content ol,
+.markdown-content ul {
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    font-size: 1.125rem; /* text-lg */
+}
+
+.markdown-content li {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+    color: #d1d5db; /* gray-300 */
+}
+
+.markdown-content strong {
+    color: #f9fafb; /* gray-50 */
+    font-weight: 600;
+}
+
+.markdown-content a {
+    color: #f7931e; /* brand-yellow */
+    text-decoration: underline;
+}
+
+.markdown-content a:hover {
+    color: #ff6b35; /* brand-orange */
+}
+</style>
+{% endblock %}

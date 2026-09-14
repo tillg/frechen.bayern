@@ -1,0 +1,51 @@
+<!-- Navigation -->
+<nav class="{{ styles.nav_bg }} border-b" style="border-color: var(--color-border-primary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo and brand -->
+            <div class="flex items-center space-x-3">
+                <img src="/static/images/{{ site.logo_file }}" alt="{{ site.name }} Logo" class="h-10 w-auto">
+                <a href="/" class="{{ styles.nav_brand }}">
+                    {{ site.name }}
+                </a>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex items-center space-x-8">
+                {%- for item in nav_items %}
+                <a href="{{ item.url }}" class="{{ styles.nav_link }}">{{ item.label }}</a>
+                {%- endfor %}
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="{{ styles.mobile_menu_btn }}">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden {{ styles.mobile_menu_bg }}" style="border-color: var(--color-border-primary); background-color: var(--color-bg-secondary);">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            {%- for item in nav_items %}
+            <a href="{{ item.url }}" class="{{ styles.mobile_menu_link }}">{{ item.label }}</a>
+            {%- endfor %}
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile menu toggle script -->
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>

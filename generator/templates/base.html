@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page.title }} - {{ site.name }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ page.description }}{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{ site.domain }}/{% block og_url %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ page.title }} - {{ site.name }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ page.description }}{% endblock %}">
+    <meta property="og:image" content="https://{{ site.domain }}/static/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="{{ site.name }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://{{ site.domain }}/{% block twitter_url %}{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ page.title }} - {{ site.name }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ page.description }}{% endblock %}">
+    <meta property="twitter:image" content="https://{{ site.domain }}/static/images/og-image.png">
+
+    <!-- Apple -->
+    <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration using centralized design variables
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        {% for name, color in brand_colors.items() %}
+                        'brand-{{ name }}': '{{ color }}',
+                        {% endfor %}
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Variables for additional design tokens -->
+    <style>
+        :root {
+            /* Brand Colors */
+            {% for name, color in brand_colors.items() %}
+            --color-brand-{{ name }}: {{ color }};
+            {% endfor %}
+
+            /* Background Colors */
+            {% for name, color in background_colors.items() %}
+            --color-bg-{{ name }}: {{ color }};
+            {% endfor %}
+
+            /* Text Colors */
+            {% for name, color in text_colors.items() %}
+            --color-text-{{ name }}: {{ color }};
+            {% endfor %}
+
+            /* Border Colors */
+            {% for name, color in border_colors.items() %}
+            --color-border-{{ name }}: {{ color }};
+            {% endfor %}
+
+            /* Spacing */
+            {% for name, size in spacing.items() %}
+            --spacing-{{ name }}: {{ size }};
+            {% endfor %}
+
+            /* Border Radius */
+            {% for name, radius in border_radius.items() %}
+            --radius-{{ name }}: {{ radius }};
+            {% endfor %}
+        }
+    </style>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/images/android-chrome-512x512.png">
+
+    {% if enable_analytics and google_analytics_id %}
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ google_analytics_id }}', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+    {% endif %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="{{ styles.body }} min-h-screen flex flex-col">
+    {% include "nav.html" %}
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "footer.html" %}
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

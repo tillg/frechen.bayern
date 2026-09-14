@@ -13,5 +13,5 @@ venv/
 .DS_Store
 
 # Generated
-generator/
 .playwright-mcp/
+tmp/

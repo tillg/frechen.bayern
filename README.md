@@ -9,9 +9,9 @@ The source of the website [frechen.bayern](https://frechen.bayern).
 Create a virtual environment and install dependencies:
 
 ```bash
-python3 -m venv .env
-source .env/bin/activate
-pip install -r ../tills-static-site-generator/requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r generator/requirements.txt
 ```
 
 ### Run the dev server
@@ -19,7 +19,7 @@ pip install -r ../tills-static-site-generator/requirements.txt
 With your virtual environment activated, run:
 
 ```bash
-python ../tills-static-site-generator/dev_server.py
+python generator/dev_server.py
 ```
 
 This will:

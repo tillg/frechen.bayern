@@ -1,0 +1,63 @@
+<!-- Hero Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center">
+            <!-- Hero Image (from frontmatter) or Logo -->
+            <div class="flex justify-center mb-8">
+                {% if page.hero_image %}
+                <img src="{{ page.hero_image }}" alt="{{ site.name }}" class="h-32 w-32 object-contain">
+                {% else %}
+                <img src="/static/images/{{ site.logo_file }}" alt="{{ site.name }} Logo" class="h-32 w-auto">
+                {% endif %}
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-brand-orange via-brand-yellow to-brand-coral bg-clip-text text-transparent">
+                    {{ site.name }}
+                </span>
+            </h1>
+
+            <!-- Tagline -->
+            <p class="{{ styles.hero_tagline }}">
+                {{ page.tagline }}
+            </p>
+
+            <!-- Description -->
+            <p class="{{ styles.hero_description }}">
+                {{ page.hero_description | safe }}
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                {% for button in page.cta_buttons %}
+                {% if button.is_badge %}
+                <a href="{{ button.url }}"
+                   class="inline-block transition-all transform hover:scale-105"
+                   {% if enable_analytics and google_analytics_id %}
+                   onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '{{ button.label | replace('<br>', ' ') | striptags | lower | replace(' ', '_') }}'});"
+                   {% endif %}>
+                    <img src="{{ button.icon }}" class="h-16" alt="{{ button.label }}" style="height: 64px;">
+                </a>
+                {% else %}
+                <a href="{{ button.url }}"
+                   class="inline-flex items-center px-8 py-3 bg-brand-{{ button.color }} hover:bg-opacity-90 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                   {% if enable_analytics and google_analytics_id %}
+                   onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '{{ button.label | replace('<br>', ' ') | striptags | lower | replace(' ', '_') }}'});"
+                   {% endif %}>
+                    <img src="{{ button.icon }}" class="w-6 h-6 mr-2" alt="">
+                    {{ button.label | safe }}
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- CTA Statement (optional) -->
+            {% if page.cta_statement %}
+            <p class="{{ styles.hero_cta_statement }}">
+                {{ page.cta_statement | safe }}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
