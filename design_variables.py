@@ -2,11 +2,13 @@
 Design variables for frechen.bayern - White theme
 """
 
-# Brand colors - Blue accent
+# Brand colors - Taubenblau (RAL 5014), matching the Fensterläden/Fensterrahmen
+# Decision 2026-08-08; sRGB approx of RAL 5014 is #606E8C. Screen hex only —
+# calibrate against a real RAL 5014 sample at the object (wiki to-do).
 BRAND_COLORS = {
-    "orange": "#2563eb",   # Primary blue (replacing orange)
-    "yellow": "#3b82f6",   # Secondary blue (replacing yellow)
-    "coral": "#60a5fa",    # Accent blue (replacing coral)
+    "orange": "#606E8C",   # Primary — RAL 5014 Taubenblau
+    "yellow": "#7C88A3",   # Secondary — lighter Taubenblau tint
+    "coral": "#9AA4BA",    # Accent — lightest Taubenblau tint
 }
 
 # Background colors - Light theme
